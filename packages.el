@@ -56,3 +56,8 @@
 ;;    :repo "manateelazycat/emacs-application-framework"
 ;;    :depth 1
 ;;    :files ("*")))
+
+
+;;(package! org-link-beautify)
+(package! org-roam-server)
+(package! org-caldav)

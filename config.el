@@ -62,9 +62,37 @@
 
 ;;(defun lsp-ui-doc-mode ())
 ;;(defun lsp-ui-peek-mode ())
+(add-hook! lsp mode lsp-ui-mode)
 (add-hook! lsp-mode lsp-ui-doc-mode)
 (add-hook! lsp-mode lsp-ui-peek-mode)
 
 (setq +latex-viewers '(evince))
 
 (setq org-directory "~/Documents/Notes")
+
+(setq evil-snipe-scope 'whole-visible)
+
+;; (use-package! org-link-beautify
+;;   :hook (org-mode . org-link-beautify-mode))
+(setq org-roam-index-file "~/Documents/Notes/roam/index.org")
+(use-package org-roam-server
+  :ensure t
+  :config
+  (setq org-roam-server-host "127.0.0.1"
+        org-roam-server-port 8080
+        org-roam-server-authenticate nil
+        org-roam-server-export-inline-images t
+        org-roam-server-serve-files nil
+        org-roam-server-served-file-extensions '("pdf" "mp4" "ogv")
+        org-roam-server-network-poll t
+        org-roam-server-network-arrows nil
+        org-roam-server-network-label-truncate t
+        org-roam-server-network-label-truncate-length 60
+        org-roam-server-network-label-wrap-length 20))
+
+(use-package org-caldav
+  :config
+  (setq org-caldav-url "https://calendar.omase.tk/yachimm_thomasegh/"
+        org-caldav-id "d47c47fe-cf6c-33ec-b33e-914de0e09e4d"
+        org-caldav-inbox "~/Documents/Notes/agenda.org"
+        org-caldav-files ("~/Documents/Notes/todo.org")))
